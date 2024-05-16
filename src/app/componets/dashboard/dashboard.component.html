@@ -1,0 +1,126 @@
+<section class="gradient-form h-full bg-gray-900 " *ngIf="user">
+    <div class="container h-full p-5 mx-auto">
+        <div class="g-6 flex h-full flex-wrap items-center justify-center text-neutral-900 max-w-7xl mx-auto">
+            <div class="w-full">
+                <div class="block rounded-lg shadow-lg" style="background-color: #fff2c3;">
+                    <div class="g-0 lg:flex lg:flex-wrap">
+                        <!-- Left column container-->
+                        <div class="px-4 md:px-0 lg:w-6/12">
+                            <div class="md:mx-6 md:p-12">
+                                <!--Logo-->
+                                <div class="text-center">
+                                    <img class="mx-auto w-48 h-48 rounded-full" [src]="this.imageUrl" alt="logo" />
+                                    <h4 class="mb-12 mt-1 pb-1 text-2xl font-semibold">
+                                        Modificar Perfil
+                                    </h4>
+                                </div>
+
+                                <form #registerForm="ngForm" (ngSubmit)="editUser()">
+                                    <div class="grid grid-cols-2 gap-4">
+                                        <!--Username input-->
+
+                                        <div class="relative z-0 w-full mb-5 group">
+                                            <input type="email" name="gmail" id="gmail"
+                                                class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-600 appearance-none focus:outline-none focus:ring-0 focus:border-gray-600 peer"
+                                                placeholder=" " readonly [(ngModel)]="user.gmail" />
+                                            <label for="gmail"
+                                                class="peer-focus:font-medium absolute text-sm text-gray-900 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-gray-600 peer-focus:dark:text-gray-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                                                Correo Electrónico</label>
+                                        </div>
+
+                                        <!--Password input-->
+                                        <div class="relative z-0 w-full mb-5 group">
+                                            <input type="text" name="username" id="username"
+                                                class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-600 appearance-none focus:outline-none focus:ring-0 focus:border-gray-600 peer"
+                                                placeholder=" " [required]="true" #username="ngModel"
+                                                [(ngModel)]="user.username" />
+                                            <label for="username"
+                                                class="peer-focus:font-medium absolute text-sm text-gray-900 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-gray-600 peer-focus:dark:text-gray-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                                                Nombre de Usuario</label>
+                                            <div *ngIf="username.invalid && (username.dirty || username.touched)"
+                                                class="text-red-500">
+                                                <div *ngIf="username.errors?.['required']">El usuario es obligatorio.
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="grid grid-cols-2 gap-4">
+
+                                        <div class="relative z-0 w-full mb-5 group">
+                                            <input type="text" name="name" id="name"
+                                                class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-600 appearance-none focus:outline-none focus:ring-0 focus:border-gray-600 peer"
+                                                placeholder=" " [(ngModel)]="user.name" [required]="true"
+                                                #name="ngModel" />
+                                            <label for="name"
+                                                class="peer-focus:font-medium absolute text-sm text-gray-900 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-gray-600 peer-focus:dark:text-gray-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                                                Nombre</label>
+                                            <div *ngIf="name.invalid && (name.dirty || name.touched)"
+                                                class="text-red-500">
+                                                <div *ngIf="name.errors?.['required']">El nombre es obligatorio.</div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="relative z-0 w-full mb-5 group">
+                                            <input type="text" name="surnames" id="surnames"
+                                                class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-600 appearance-none focus:outline-none focus:ring-0 focus:border-gray-600 peer"
+                                                placeholder=" " [required]="true" #surnames="ngModel"
+                                                [(ngModel)]="user.surnames" />
+                                            <label for="surnames"
+                                                class="peer-focus:font-medium absolute text-sm text-gray-900 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-gray-600 peer-focus:dark:text-gray-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Apellidos</label>
+                                            <div *ngIf="surnames.invalid && (surnames.dirty || surnames.touched)"
+                                                class="text-red-500">
+                                                <div *ngIf="surnames.errors?.['required']">Los apellidos son
+                                                    obligatorios.</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="relative border-2 border-gray-900 border-dashed rounded-lg p-6 mb-5"
+                                        id="dropzone">
+                                        <input type="file" class="absolute inset-0 w-full h-full opacity-0 z-50"
+                                            (change)="onFileSelected($event)" accept="image/jpg" />
+                                        <div class="text-center">
+                                            <img class="mx-auto h-12 w-12"
+                                                src="https://www.svgrepo.com/show/357902/image-upload.svg" alt="">
+
+                                            <h3 class="mt-2 text-sm font-medium text-gray-900">
+                                                <label for="file-upload" class="relative cursor-pointer">
+                                                    <span>Arrastra y suelta</span>
+                                                    <span class="text-orange-500"> o dale click</span>
+                                                    <span> para subir imagen</span>
+                                                    <input id="file-upload" name="file-upload" type="file"
+                                                        class="sr-only">
+                                                </label>
+                                            </h3>
+                                        </div>
+                                    </div>
+
+                                    <!--Submit button-->
+                                    <div class="mb-12 pb-1 pt-1 text-center">
+                                        <button
+                                            class="mb-3 inline-block w-full rounded px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_rgba(0,0,0,0.2)] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)] focus:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)] focus:outline-none focus:ring-0 active:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)]"
+                                            type="submit" data-te-ripple-init data-te-ripple-color="light" style="
+                                            background: linear-gradient(to right, #D4521B, #F25D27, #F29B30, #FEAF31);
+                                            ">
+                                            Modificar los datos
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- Right column container with background and description-->
+                        <div class="flex items-center rounded-b-lg lg:w-6/12 lg:rounded-r-lg lg:rounded-bl-none"
+                            style="background: linear-gradient(to left, #D4521B, #F25D27, #F29B30,  #fff2c3)">
+                            <div class="text-white mx-auto p-12">
+                                <img class="h-auto max-w-lg rounded-lg" src="assets/login2.jpg" width="400px">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

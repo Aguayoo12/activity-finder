@@ -1,0 +1,60 @@
+<div class="rounded overflow-hidden shadow-lg pt-3 w-full h-full">
+
+    <a href="#"></a>
+    <div class="relative">
+        <a>
+            <img class="w-full h-60" src="data:image/jpg;base64,{{this.activity.photo}}" alt="Sunset in the mountains">
+            <div
+                class="hover:bg-transparent transition duration-300 absolute bottom-0 top-0 right-0 left-0 bg-gray-900 opacity-25">
+            </div>
+        </a>
+        <a (click)="goCategories()">
+            <div
+                class="absolute bottom-0 left-0 bg-orange-500 px-4 py-2 text-white text-sm hover:bg-white hover:text-orange-500 transition duration-500 ease-in-out">
+                {{activity.type}}
+            </div>
+        </a>
+    </div>
+    <div class="px-6 mt-2 flex flex-row items-center justify-between">
+        <div class="flex items-center">
+            <svg class="h-4 w-4 fill-current text-gray-500 mr-1" viewBox="0 0 24 24">
+                <path
+                    d="M12 0c-4.411 0-8 3.589-8 8 0 5.25 8 16 8 16s8-10.75 8-16c0-4.411-3.589-8-8-8zm0 11c-1.656 0-3-1.344-3-3s1.344-3 3-3 3 1.344 3 3-1.344 3-3 3z">
+                </path>
+            </svg>
+            <span class="text-gray-500 text-sm mr-2">{{activity.city}}</span>
+        </div>
+
+        <div class="flex items-center">
+            <span href="#" class="py-1 text-sm font-regular text-gray-900 mr-1 flex flex-row items-center ">
+                <svg height="13px" width="13px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512"
+                    style="enable-background:new 0 0 512 512;" xml:space="preserve">
+                    <g>
+                        <g>
+                            <path d="M256,0C114.837,0,0,114.837,0,256s114.837,256,256,256s256-114.837,256-256S397.163,0,256,0z M277.333,256
+        c0,11.797-9.536,21.333-21.333,21.333h-85.333c-11.797,0-21.333-9.536-21.333-21.333s9.536-21.333,21.333-21.333h64v-128
+        c0-11.797,9.536-21.333,21.333-21.333s21.333,9.536,21.333,21.333V256z"></path>
+                        </g>
+                    </g>
+                </svg>
+                <span class="ml-1">{{activity.time}} hrs.</span></span>
+        </div>
+    </div>
+    <div class="px-6">
+        <a (click)="goActivity(this.activity.id)"
+            class="font-semibold text-lg inline-block hover:text-orange-500 transition duration-500 ease-in-out">{{this.activity.name}}
+            <p class="text-gray-400 text-sm">
+                Para más detalles, haz click en el nombre de la actividad.
+            </p>
+        </a>
+    </div>
+    <div class="flex items-center px-6 py-4">
+        <a href="#"><img class="w-10 h-10 rounded-full mr-4" src="data:image/jpg;base64,{{this.activity.avatar}}"
+                alt="Avatar"></a>
+        <div class="text-sm">
+            <a href="#"
+                class="text-gray-900 font-semibold leading-none hover:text-orange-500">{{this.activity.username}}</a>
+        </div>
+    </div>
+</div>

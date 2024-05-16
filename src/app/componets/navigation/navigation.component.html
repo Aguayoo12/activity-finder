@@ -1,0 +1,68 @@
+<nav class="bg-gray-900 border-gray-200 dark:bg-gray-900 fixed top-0 w-full z-50">
+    <div class=" flex flex-wrap items-center p-5 w-full mx-auto">
+        <a href="" class="flex items-center space-x-3 rtl:space-x-reverse">
+            <img [src]="logoImage" class="h-16" alt="Logo" />
+            <span
+                class="self-center text-2xl text-white font-semibold whitespace-nowrap dark:text-white">Sportfolio</span>
+        </a>
+        <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse ml-auto">
+            <button *ngIf="!this.user" type="button" style="background-color: #F25D27;" (click)="goLogin()"
+                class="text-white hover:bg-gray-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover: dark:focus:ring-blue-800">
+                Login</button>
+            <div *ngIf="this.user">
+                <button id="dropdownInformationButton" data-dropdown-toggle="dropdownInformation" type="button"
+                    class="h-16 w-16 overflow-hidden rounded-full"><img src="data:image/jpg;base64,{{this.user.avatar}}"
+                        alt="" class="w-16 h-16">
+                </button>
+                <div id="dropdownInformation"
+                    class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+                    <div class="px-4 py-3 text-sm text-gray-900 dark:text-white">
+                        <div>{{user.username}}</div>
+                        <div class="font-medium truncate">{{user.gmail}}</div>
+                    </div>
+                    <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
+                        aria-labelledby="dropdownInformationButton">
+                        <li>
+                            <a (click)="goDashboard()"
+                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Detalles</a>
+                        </li>
+                        <li>
+                            <a href="" (click)="singOut()"
+                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Cerrar
+                                Sesión</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1 " id="navbar-cta"
+            style="margin-left: 200px;">
+            <ul
+                class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-green-300 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+                <li>
+                    <a (click)="goAllActivities()" class="block py-2 px-3 md:p-0 text-white rounded"
+                        aria-current="page">Actividades</a>
+                </li>
+                <li>
+                    <a (click)="goAddActivity()" class="block py-2 px-3 md:p-0 text-white rounded"
+                        aria-current="page">Crear
+                        Actividad</a>
+                </li>
+                <li>
+                    <a (click)="goUserActivity()" class="block py-2 px-3 md:p-0 text-white rounded"
+                        aria-current="page">Ver mis
+                        Actividades</a>
+                </li>
+                <li>
+                    <a (click)="goCategorias()" class="block py-2 px-3 md:p-0 text-white rounded"
+                        aria-current="page">Categorías</a>
+                </li>
+                <li>
+                    <a (click)="goAdmin()" class="block py-2 px-3 md:p-0 text-white rounded" aria-current="page">Vista
+                        Admin</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div style="height: 100px;"></div>

@@ -1,0 +1,87 @@
+<section class="gradient-form h-full bg-gray-900">
+    <div class="container h-full p-5 mx-auto">
+        <div class="g-6 flex h-full flex-wrap items-center justify-center text-neutral-900 max-w-7xl mx-auto">
+            <div class="w-full">
+                <div class="block rounded-lg shadow-lg" style="background-color: #fff2c3;">
+                    <div class="g-0 lg:flex lg:flex-wrap">
+                        <!-- Left column container-->
+                        <div class="px-4 md:px-0 lg:w-6/12">
+                            <div class="md:mx-6 md:p-12">
+                                <!--Logo-->
+                                <div class="text-center">
+                                    <img class="mx-auto w-48" src="assets/logobueno1.png" alt="logo" />
+                                    <h4 class="mb-12 mt-1 pb-1 text-2xl font-semibold">
+                                        Iniciar Sesión
+                                    </h4>
+                                </div>
+
+                                <form (ngSubmit)="login()">
+                                    <!--Username input-->
+
+                                    <div class="relative z-0 w-full mb-5 group">
+                                        <input type="text" name="username" id="username"
+                                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-600 appearance-none focus:outline-none focus:ring-0 focus:border-gray-600 peer"
+                                            placeholder=" " [(ngModel)]="user.username" [required]="true"
+                                            #username="ngModel" />
+                                        <label for="username"
+                                            class="peer-focus:font-medium absolute text-sm text-gray-900 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-gray-600 peer-focus:dark:text-gray-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                                            Nombre de Usuario</label>
+                                        <div *ngIf="username.invalid && (username.dirty || username.touched)"
+                                            class="text-red-500">
+                                            <div *ngIf="username.errors?.['required']">El usuario es obligatorio.</div>
+                                        </div>
+                                    </div>
+
+                                    <!--Password input-->
+
+                                    <div class="relative z-0 w-full mb-5 group">
+                                        <input type="password" name="pass" id="pass"
+                                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-600 appearance-none focus:outline-none focus:ring-0 focus:border-gray-600 peer"
+                                            placeholder=" " [(ngModel)]="user.password" [required]="true"
+                                            #pass="ngModel" />
+                                        <label for="pass"
+                                            class="peer-focus:font-medium absolute text-sm text-gray-900 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-gray-600 peer-focus:dark:text-gray-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Contraseña</label>
+                                        <div *ngIf="pass.invalid && (pass.dirty || pass.touched)" class="text-red-500">
+                                            <div *ngIf="pass.errors?.['required']">La contraseña es obligatoria.</div>
+                                        </div>
+                                    </div>
+
+                                    <!--Submit button-->
+                                    <div class="mb-12 pb-1 pt-1 text-center">
+                                        <button
+                                            class="mb-3 inline-block w-full rounded px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_rgba(0,0,0,0.2)] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)] focus:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)] focus:outline-none focus:ring-0 active:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)]"
+                                            type="submit" data-te-ripple-init data-te-ripple-color="light" style="
+                                            background: linear-gradient(to right, #D4521B, #F25D27, #F29B30, #FEAF31);
+                                            ">
+                                            Iniciar Sesión
+                                        </button>
+                                    </div>
+
+                                    <!--Register button-->
+                                    <div class="flex items-center justify-between pb-6">
+                                        <p class="mb-0 mr-2">¿No tienes cuenta?, Regístrate</p>
+                                        <button type="button"
+                                            class="inline-block rounded border-2 border-danger px-6 pb-[6px] pt-2 text-xs font-medium uppercase leading-normal text-white transition duration-150 ease-in-out hover:border-danger-600 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-danger-600 focus:border-danger-600 focus:text-danger-600 focus:outline-none focus:ring-0 active:border-danger-700 active:text-danger-700 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10"
+                                            data-te-ripple-init data-te-ripple-color="light" style="
+                                            background: linear-gradient(to right, #D4521B, #F25D27, #F29B30, #FEAF31);"
+                                            (click)="goRegister()">
+                                            Registrarse
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <!-- Right column container with background and description-->
+                        <div class="flex items-center rounded-b-lg lg:w-6/12 lg:rounded-r-lg lg:rounded-bl-none"
+                            style="background: linear-gradient(to left, #D4521B, #F25D27, #F29B30,  #fff2c3)">
+                            <div class="text-white mx-auto p-12">
+                                <img class="h-auto max-w-lg rounded-lg" src="assets/login2.jpg" width="400px">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

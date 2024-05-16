@@ -1,0 +1,57 @@
+<div class="py-10 bg-cover bg-center bg-no-repeat" style="background-image: url(assets/newActivity.jpg);">
+    <div class="max-w-6xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
+        <div class="text-2xl py-4 px-6 bg-gray-900 text-white text-center font-bold uppercase">
+            Editar Actividad
+        </div>
+        <form *ngIf="activity" class="py-4 px-6" (ngSubmit)="submitForm()" enctype="multipart/form-data">
+            <div class="grid grid-cols-2 gap-6">
+                <div class="row-span-4">
+                    <p class="text-gray-700 font-bold mb-2">Imagen de la actividad</p>
+                    <img src="data:image/jpg;base64,{{this.activity.photo}}" alt="Foto" class="w-full h-auto mb-2"
+                        *ngIf="!imageUrl">
+                    <img [src]="imageUrl" alt="Foto" class="w-full h-auto mb-2" *ngIf="imageUrl">
+                    <input type="file" (change)="onFileSelected($event)" accept="image/*" class="mb-2">
+                </div>
+                <div class="">
+                    <label class="block text-gray-700 font-bold mb-2" for="name">Nombre</label>
+                    <input [(ngModel)]="activity.name" id="name" name="name" type="text"
+                        placeholder="Introduce el nombre"
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                </div>
+                <div class="">
+                    <label class="block text-gray-700 font-bold mb-2" for="city">Localización</label>
+                    <input [(ngModel)]="activity.city" id="city" name="city" type="text"
+                        placeholder="Introduce la localización"
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                </div>
+                <div class="">
+                    <label class="block text-gray-700 font-bold mb-2" for="time">Tiempo Requerido</label>
+                    <input [(ngModel)]="activity.time" id="time" name="time" type="time" placeholder="Select a time"
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 font-bold mb-2" for="type">Tipo de Actividad</label>
+                    <select [(ngModel)]="activity.type" id="type" name="type"
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                        <option value="Caminar">Caminar</option>
+                        <option value="Correr">Correr</option>
+                        <option value="Bicicleta">Bicicleta</option>
+                        <option value="Nadar">Nadar</option>
+                        <option value="Pelota">Juegos de Pelota</option>
+                    </select>
+                </div>
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 font-bold mb-2" for="description">Breve Descripción</label>
+                <textarea [(ngModel)]="activity.description" id="description" name="description" rows="4"
+                    placeholder="Enter any additional information"
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></textarea>
+            </div>
+            <div class="flex items-center justify-center mb-4">
+                <button type="submit"
+                    class="bg-gray-900 text-white py-2 px-4 rounded hover:bg-gray-800 focus:outline-none focus:shadow-outline">Editar
+                    Actividad</button>
+            </div>
+        </form>
+    </div>
+</div>

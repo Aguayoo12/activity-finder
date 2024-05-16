@@ -1,0 +1,82 @@
+<div class="py-10 bg-cover bg-center bg-no-repeat" style="background-image: url(assets/newActivity.jpg);">
+    <div class="max-w-6xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
+        <div class="text-2xl py-4 px-6 bg-gray-900 text-white text-center font-bold uppercase">
+            Registrar nueva Actividad
+        </div>
+        <form class="py-4 px-6" (ngSubmit)="submitForm()" enctype="multipart/form-data" #form="ngForm">
+            <div class="grid grid-cols-2 gap-6">
+                <div class="row-span-4">
+                    <p class="text-gray-700 font-bold mb-2">Imagen de la actividad</p>
+                    <img [src]="imageUrl" alt="Foto" class="w-full h-auto mb-2" *ngIf="imageUrl">
+                    <input type="file" (change)="onFileSelected($event)" accept="image/*" class="mb-2">
+                </div>
+                <div class="">
+                    <label class="block text-gray-700 font-bold mb-2" for="name">Nombre</label>
+                    <input [(ngModel)]="newActivity.name" id="name" name="name" type="text"
+                        placeholder="Introduce el nombre" [required]="true" minlength="3" maxlength="50"
+                        pattern="[a-zA-Z ]*" #name="ngModel"
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    <div *ngIf="name.invalid && (name.dirty || name.touched)" class="text-red-500">
+                        <div *ngIf="name.errors?.['required']">El nombre es obligatorio.</div>
+                        <div *ngIf="name.errors?.['minlength']">El nombre debe tener al menos 3 caracteres.</div>
+                        <div *ngIf="name.errors?.['maxlength']">El nombre no puede tener más de 50 caracteres.</div>
+                        <div *ngIf="name.errors?.['pattern']">El nombre solo puede contener letras y espacios.</div>
+                    </div>
+                </div>
+                <div class="">
+                    <label class="block text-gray-700 font-bold mb-2" for="city">Localización</label>
+                    <input [(ngModel)]="newActivity.city" id="city" name="city" type="text"
+                        placeholder="Introduce la localización" [required]="true" minlength="3" maxlength="50"
+                        pattern="[a-zA-Z ]*" #city="ngModel"
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    <div *ngIf="city.invalid && (city.dirty || city.touched)" class="text-red-500">
+                        <div *ngIf="city.errors?.['required']">La localización es obligatorio.</div>
+                        <div *ngIf="city.errors?.['minlength']">La localización debe tener al menos 3 caracteres.</div>
+                        <div *ngIf="city.errors?.['maxlength']">La localización no puede tener más de 50 caracteres.
+                        </div>
+                        <div *ngIf="city.errors?.['pattern']">La localización solo puede contener letras y espacios.
+                        </div>
+                    </div>
+                </div>
+                <div class="">
+                    <label class="block text-gray-700 font-bold mb-2" for="time">Tiempo Requerido</label>
+                    <input [(ngModel)]="newActivity.time" id="time" name="time" type="time" placeholder="Select a time"
+                        [required]="true"
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 font-bold mb-2" for="type">Tipo de Actividad</label>
+                    <select [(ngModel)]="newActivity.type" id="type" name="type"
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                        <option value="Caminar">Caminar</option>
+                        <option value="Correr">Correr</option>
+                        <option value="Bicicleta">Bicicleta</option>
+                        <option value="Nadar">Nadar</option>
+                        <option value="Pelota">Juegos de Pelota</option>
+                    </select>
+                </div>
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 font-bold mb-2" for="description">Breve Descripción</label>
+                <textarea [(ngModel)]="newActivity.description" id="description" name="description" rows="4"
+                    placeholder="Enter any additional information" [required]="true" minlength="3" maxlength="100"
+                    pattern="[a-zA-Z0-9 ]*" #description="ngModel"
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></textarea>
+                <div *ngIf="description.invalid && (description.dirty || description.touched)" class="text-red-500">
+                    <div *ngIf="description.errors?.['required']">La descripcion es obligatorio.</div>
+                    <div *ngIf="description.errors?.['minlength']">La descripcion debe tener al menos 3 caracteres.
+                    </div>
+                    <div *ngIf="description.errors?.['maxlength']">La descripcion no puede tener más de 50 caracteres.
+                    </div>
+                    <div *ngIf="description.errors?.['pattern']">La descripcion solo puede contener letras y espacios.
+                    </div>
+                </div>
+            </div>
+            <div class="flex items-center justify-center mb-4">
+                <button type="submit"
+                    class="bg-gray-900 text-white py-2 px-4 rounded hover:bg-gray-800 focus:outline-none focus:shadow-outline">Agregar
+                    Actividad</button>
+            </div>
+        </form>
+    </div>
+</div>

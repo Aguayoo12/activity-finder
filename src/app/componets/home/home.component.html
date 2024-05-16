@@ -1,0 +1,26 @@
+<section class="bg-cover bg-center bg-no-repeat bg-gray-700 bg-blend-multiply"
+    style="background-image: url('assets/banner.jpg');">
+    <div class="px-4 mx-auto max-w-screen-xl text-center py-20">
+        <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl">DESCUBRE
+            NUEVAS AVENTURAS</h1>
+        <p class="mb-4 text-lg font-normal text-gray-300 lg:text-xl sm:px-16 lg:px-48">Explora un sinfín de experiencias
+            únicas y encuentra inspiración para tu próxima aventura. Ya sea que disfrutes de la naturaleza, la cultura o
+            la aventura extrema, nuestra plataforma es tu espacio para documentar, compartir fotos y consejos, y
+            conectarte con otros entusiastas.
+        </p>
+    </div>
+</section>
+<div class="pb-12 mt-4">
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="bg-white dark:bg-white overflow-hidden shadow-sm sm:rounded-lg border ">
+            <div class="p-6 text-gray-900 dark:text-gray-900">
+                <h2 class="text-4xl font-bold dark:text-gray-900 text-center">Actividades
+                    más Recientes</h2>
+                <div class=" grid grid-cols-3 gap-4">
+                    <app-main-card class="flex items-stretch" *ngFor="let activity of activities"
+                        [activity]="activity"></app-main-card>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
